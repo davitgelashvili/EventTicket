@@ -1,0 +1,40 @@
+.card {
+    display: block;
+    margin: 15px;
+    text-decoration: none;
+}
+
+.card__cover {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+.card__cover--img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__title {
+    margin-top: 15px;
+    color: #424242;
+    font-size: 18px;
+}
+
+.card__local {
+    margin-top: 6px;
+    color: #424242;
+    font-size: 14px;
+}
+
+.card__date {
+    margin-top: 3px;
+    color: #1449A3;
+    font-size: 14px;
+}
+
+
+
+
