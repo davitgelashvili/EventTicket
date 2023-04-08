@@ -35,16 +35,15 @@ function App() {
   useEffect(()=> {
    if(cookie.get('sessionID') !== undefined) {
     getApi(`users/${cookie.get('sessionID')}`).then(res => {
-      const data = res?.data
-      data?.map((res) => {return(
+      return(
         dispatch(userAction.changeLogedIn(true)),
-        dispatch(userAction.changeBalance(res.balance)),
-        dispatch(userAction.changeVerified(res.isVerify)),
-        dispatch(userAction.changeUserId(res.id))
-      )})
+        dispatch(userAction.changeBalance(res.data.balance)),
+        dispatch(userAction.changeVerified(res.data.isVerify)),
+        dispatch(userAction.changeUserId(res.data.id))
+      )
     })
    }
-  }, [user,dispatch])
+  }, [user, dispatch])
   
 
   return (

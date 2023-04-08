@@ -6,8 +6,8 @@ import Cookies from "universal-cookie";
 import { useDispatch } from "react-redux";
 import { userAction } from "../../../../store/userData";
 
-const cookies = new Cookies();
 function LoginForm() {
+    const cookies = new Cookies();
     const [userName, setUserName] = useState('');
     const [passsword, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
@@ -31,6 +31,7 @@ function LoginForm() {
                 thisData?.map(item => {return(
                     item.userName === data.userName && item.passsword === data.passsword &&(
                         cookies.set("sessionID", item.id),
+                        console.log(thisData),
                         dispatch(userAction.changeLogedIn(true))
                     )
                 )})
