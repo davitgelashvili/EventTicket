@@ -23,22 +23,14 @@ function Main() {
         const eventFullDate = item.active_date
         const eventDate = eventFullDate.split("/")
         const eventTime = new Date(eventDate[0]+'/'+eventDate[1]+'/'+eventDate[2]).getTime()
-        if(
-            eventTime > nowTime
-        ){
-            return item
-        }
+        return (eventTime > nowTime && item)
     })
 
     const oldFiltered = eventsData.filter(item => {
         const eventFullDate = item.active_date
         const eventDate = eventFullDate.split("/")
         const eventTime = new Date(eventDate[0]+'/'+eventDate[1]+'/'+eventDate[2]).getTime()
-        if(
-            eventTime < nowTime
-        ){
-            return item
-        }
+        return (eventTime < nowTime && item)
     })
     
     return (
