@@ -4,7 +4,7 @@ import UiInput from "../../../Ui/UiInput/UiInput"
 import Style from './LoginForm.module.css'
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userAction } from "../../../../store/userData";
 
 function LoginForm() {
@@ -20,10 +20,6 @@ function LoginForm() {
         passsword: passsword
     }
 
-    const RedirectNav = () => {
-        return navigate("/")
-    }
-
     const handleSubmit = (e)=> {
         e.preventDefault();
         if(
@@ -33,7 +29,7 @@ function LoginForm() {
             setIsError(true)
         } else {
             getApi('users').then( res => {
-                res.data.map(item => {
+                res?.data?.map(item => {
                     if(
                         item.userName === data.userName &&
                         item.passsword === data.passsword

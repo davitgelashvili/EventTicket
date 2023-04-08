@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Style from './EventDetail.module.css'
 import EventPrice from './EventPrice'
 

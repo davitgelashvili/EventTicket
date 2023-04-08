@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import UiInput from '../../../Ui/UiInput/UiInput'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import ProfileMenu from './ProfileMenu'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const Profile = () => {
     const [isMenu, setIsMenu] = useState(false)

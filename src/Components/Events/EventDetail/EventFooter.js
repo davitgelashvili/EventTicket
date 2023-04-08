@@ -23,7 +23,7 @@ function EventFooter({item}){
 
     
     useEffect(()=>{
-        filtered.map(id => id.eventId === item.id && setThisTicketBuy(true))
+        filtered?.map(id => id.eventId === item.id && setThisTicketBuy(true))
     }, [])
 
 

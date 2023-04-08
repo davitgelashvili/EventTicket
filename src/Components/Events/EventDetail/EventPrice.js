@@ -18,7 +18,7 @@ const EventPrice = ({item}) => {
         <h1>
             ფასი: 
             <span>
-            {item?.price} ლარი
+            {price} ლარი
             </span>
         </h1>
         </>
