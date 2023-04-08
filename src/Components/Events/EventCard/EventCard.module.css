@@ -1,7 +1,12 @@
 .card {
     display: block;
-    margin: 0 15px 30px 15px;
+    margin: 0 15px 0 15px;
     text-decoration: none;
+    box-shadow: 0px 6px 20px -10px #656565;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 100%;
+    background-color: #fff;
 }
 
 .card__cover {
@@ -17,10 +22,29 @@
     object-fit: cover;
 }
 
-.card__title {
-    margin-top: 15px;
+.card__text {
+    padding: 15px;
+}
+
+.card__price {
     color: #424242;
     font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #424242;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.card__title {
+    color: #424242;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .card__local {

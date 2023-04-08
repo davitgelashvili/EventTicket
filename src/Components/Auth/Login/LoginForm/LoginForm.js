@@ -3,17 +3,15 @@ import { getApi} from "../../../../http/getApi";
 import UiInput from "../../../Ui/UiInput/UiInput"
 import Style from './LoginForm.module.css'
 import Cookies from "universal-cookie";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userAction } from "../../../../store/userData";
 
+const cookies = new Cookies();
 function LoginForm() {
     const [userName, setUserName] = useState('');
     const [passsword, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
     const dispatch = useDispatch()
-    const cookies = new Cookies();
-    const navigate = useNavigate()   
 
     const data = {
         userName: userName,
@@ -29,15 +27,13 @@ function LoginForm() {
             setIsError(true)
         } else {
             getApi('users').then( res => {
-                res?.data?.map(item => {
-                    if(
-                        item.userName === data.userName &&
-                        item.passsword === data.passsword
-                    ){
-                        cookies.set("sessionID", item.id);
+                const thisData = res?.data
+                thisData?.map(item => {return(
+                    item.userName === data.userName && item.passsword === data.passsword &&(
+                        cookies.set("sessionID", item.id),
                         dispatch(userAction.changeLogedIn(true))
-                    }
-                })
+                    )
+                )})
             })
         }
     }

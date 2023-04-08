@@ -12,10 +12,10 @@ import { userAction } from './store/userData';
 import TicketScanerPage from './Pages/TicketScaner/TicketScaner';
 import { getApi } from './http/getApi';
 
+const cookie = new Cookies()
 function App() {
   const location = useLocation()
   const dispatch = useDispatch()
-  const cookies = new Cookies()
   const [sidebar, setSidebar] = useState(true)
   const user = useSelector( state => state.userData)
 
@@ -33,17 +33,19 @@ function App() {
   }, [location])
 
   useEffect(()=> {
-   if(cookies.get('sessionID') !== undefined) {
-    getApi(`users/${cookies.get('sessionID')}`).then(res => {
-      dispatch(userAction.changeLogedIn(true))
-      dispatch(userAction.changeBalance(res.data.balance))
-      dispatch(userAction.changeVerified(res.data.isVerify))
-      dispatch(userAction.changeUserId(res.data.id))
+   if(cookie.get('sessionID') !== undefined) {
+    getApi(`users/${cookie.get('sessionID')}`).then(res => {
+      const data = res?.data
+      data?.map((res) => {return(
+        dispatch(userAction.changeLogedIn(true)),
+        dispatch(userAction.changeBalance(res.balance)),
+        dispatch(userAction.changeVerified(res.isVerify)),
+        dispatch(userAction.changeUserId(res.id))
+      )})
     })
    }
-  }, [user])
-  // cookies
-  // const eventLink = location.search.split("=")[1]
+  }, [user,dispatch])
+  
 
   return (
     <>

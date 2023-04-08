@@ -9,3 +9,7 @@
     max-width: calc(100% / 3);
     width: 100%;
 }
+
+.swiper-slide, .swiper-slide{
+    height: auto !important;
+}

@@ -2,8 +2,10 @@ import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { EventContext } from '../EventsContext'
 import Style from './EventDetail.module.css'
-import EventBody from './EventBody'
 import EventFooter from './EventFooter'
+import EventCover from './EventCover'
+import EventDesc from './EventDesc'
+import EventPrice from './EventPrice'
 
 
 function EventDetail(){
@@ -13,8 +15,14 @@ function EventDetail(){
   
     return (
         <div className={`${Style['detail']}`}>
-            <EventBody item={filtered[0]}/>
-            <EventFooter item={filtered[0]}/>
+            <div className={`${Style['detail__content']}`}>
+                <EventCover item={filtered[0]}/>
+                <div className={`${Style['detail__body']}`}>
+                    <EventDesc item={filtered[0]}/>
+                    <EventPrice item={filtered[0]}/>
+                    <EventFooter item={filtered[0]}/>
+                </div>
+            </div>
         </div>
     )
 }

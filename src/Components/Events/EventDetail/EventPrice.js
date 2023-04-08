@@ -14,14 +14,12 @@ const EventPrice = ({item}) => {
     }, [item])
 
     return (
-        <>
         <h1>
             ფასი: 
             <span>
             {price} ლარი
             </span>
         </h1>
-        </>
     )
 }
 

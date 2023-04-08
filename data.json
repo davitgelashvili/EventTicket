@@ -1,7 +1,6 @@
 {
   "events": [
     {
-      "2": 1,
       "id": 1863,
       "image": "https://static.tkt.ge/img/b991f209-42d9-4117-b719-5ffa52b01cd1.jpeg",
       "name": "VINI VICI - Powered by Mono Hall Tbilisi",
@@ -21,7 +20,7 @@
       "ticketBasket": {
         "basket_1": 0,
         "basket_2": 0,
-        "basket_3": -20
+        "basket_3": -22
       }
     },
     {

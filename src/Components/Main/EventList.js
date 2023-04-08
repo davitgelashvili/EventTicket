@@ -8,7 +8,9 @@ function EventList({filtered, title}) {
             <>
             {filtered && filtered.map(item => {
                 return (
-                    <EventCard key={item.id} props={item}/>
+                    <div key={item.id}>
+                        <EventCard key={item.id} props={item}/>
+                    </div>
                 )
             })}
             </>
