@@ -4,38 +4,23 @@ import Style from './Sidebar.module.css'
 function Sidebar() {
     const menu = [
         {
-            id: 98473,
-            name: "კონცერტები",
-            link: "concerts"
-        },
-        {
-            id: 44893,
-            name: "სპორტი",
-            link: "sport"
-        },
-        {
-            id: 39393,
-            name: "ოპერა",
-            link: "opera"
-        },
-        {
-            id: 205833,
-            name: "თეატრი",
-            link: "theatre"
+            id: 10893,
+            name: "მთავარი",
+            link: "/"
         }
     ]
     return (
         <div className={`${Style['sidebar']}`}>
-            <ul>
-                    {menu.map( item => {
-                        return (
-                            <li key={item.id}>
-                                <NavLink to={item.link}>
-                                    {item.name}
-                                </NavLink>
-                            </li>
-                        )
-                    })}
+            <ul className={`${Style['sidebar__menu']}`}>
+                {menu.map( item => {
+                    return (
+                        <li key={item.id} className={`${Style['sidebar__menu--item']}`}>
+                            <NavLink to={item.link} className={`${Style['sidebar__menu--link']}`}>
+                                {item.name}
+                            </NavLink>
+                        </li>
+                    )
+                })}
             </ul>
         </div>
     )

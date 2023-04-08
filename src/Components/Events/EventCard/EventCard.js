@@ -9,7 +9,7 @@ function EventCard({props}){
             </figure>
             <h1 className={`${Style['card__title']}`}>{props.name}</h1>
             <p className={`${Style['card__local']}`}>{props.location}</p>
-            <p className={`${Style['card__date']}`}>{props.date_time}</p>
+            <p className={`${Style['card__date']}`}>{props.date_month} {props.date_time}</p>
         </NavLink>
     )
 }

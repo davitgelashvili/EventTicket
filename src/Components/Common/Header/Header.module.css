@@ -7,16 +7,20 @@
 .header__content {
     width: 100%;
     display: inline-flex;
+    align-items: center;
 }
 
-.header__logo {
+.header__logo a {
     font-size: 30px;
     color: #1449A3;
+    text-decoration: none;
 }
 
 .header__search {
     width: 100%;
     max-width: 734px;
+    margin-right: 40px;
+    margin-left: 40px;
     background-color: #F5F6FE;
     border-radius: 50px;
     display: flex;
@@ -42,4 +46,11 @@
     right: 20px;
     position: absolute;
     border: none;
+}
+
+.header__auth {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 300px;
 }

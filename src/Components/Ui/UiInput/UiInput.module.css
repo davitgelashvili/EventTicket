@@ -8,8 +8,30 @@
     margin-bottom: 8px;
     font-size: 13px;
 }
-.input__value[type="text"]  {
+.input__value {
     padding: 10px 7px;
     border: 1px solid #e9e9e9;
     outline: none;
+}
+.input__value[type="submit"] {
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    width: 100%;
+    margin: 5px 0;
+}
+.input__value.light {
+    border: 1px solid #1449A3;
+    border-radius: 48px;
+    padding: 17px 33px;
+    background-color: #fff;
+    color: #1449A3;
+}
+
+.input__value.dark {
+    border: 1px solid #1449A3;
+    border-radius: 48px;
+    padding: 17px 33px;
+    background-color: #1449A3;
+    color: #fff;
 }

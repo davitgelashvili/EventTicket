@@ -1,21 +1,48 @@
 import { createContext, useEffect, useState } from "react"
-import {getApi} from "../../http/getApi";
+import { useSelector } from "react-redux";
+import {getApi, putApi} from "../../http/getApi";
 
 const EventContext = createContext();
 
 function EventContextProvider({children}) {
-    const [eventData, setEventData] = useState([])
-    const [eventTickets, setEventTickets] = useState([]);
-    const [users, setUser] = useState([]);
+    const user = useSelector(state => state.userData)
+    const [eventsData, setEvenstData] = useState([])
+    const [ticketsData, setTicketsData] = useState([]);
+    const [usersData, setUsersData] = useState([]);
+
+    function price(data) {
+        data.map(item => {
+            if(item.ticketBasket.basket_1 > 0) {
+                putApi(`events/${item.id}`, {
+                    ...item,
+                    price: item.priceBasket.basket_1
+                }) 
+            }else if(item.ticketBasket.basket_2 > 0) {
+                putApi(`events/${item.id}`, {
+                    ...item,
+                    price: item.priceBasket.basket_2
+                }) 
+            }else {
+                putApi(`events/${item.id}`, {
+                    ...item,
+                    price: item.priceBasket.basket_3
+                }) 
+            }
+        })
+    }
 
     useEffect(() => {
-        getApi('events').then(res => setEventData(res.data))
-        getApi('tickets').then(res => setEventTickets(res.data))
-        getApi('users').then(res => setUser(res.data))
-    }, [])
+        getApi('events').then(res => {
+            const data = res?.data
+            price(data && data)
+            setEvenstData(data && data)
+        })
+        getApi('tickets').then(res => setTicketsData(res?.data))
+        getApi('users').then(res => setUsersData(res?.data))
+    }, [user])
 
     return (
-        <EventContext.Provider value={{data: eventData, allTicket: eventTickets, usersData: users}} >
+        <EventContext.Provider value={{eventsData: eventsData, ticketsData: ticketsData, usersData: usersData}} >
             {children}
         </EventContext.Provider>
     )

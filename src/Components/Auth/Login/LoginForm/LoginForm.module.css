@@ -1,6 +1,8 @@
 .form {
-    margin: 50px auto;
-    max-width: 500px;
     width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 20px;
     background-color: #fff;
 }

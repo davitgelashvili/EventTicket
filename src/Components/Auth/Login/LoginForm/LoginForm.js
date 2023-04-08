@@ -1,19 +1,27 @@
-import { useEffect, useState } from "react"
-import { getApi, postApi } from "../../../../http/getApi";
+import { useState } from "react"
+import { getApi} from "../../../../http/getApi";
 import UiInput from "../../../Ui/UiInput/UiInput"
 import Style from './LoginForm.module.css'
 import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userAction } from "../../../../store/userData";
 
 function LoginForm() {
     const [userName, setUserName] = useState('');
     const [passsword, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const dispatch = useDispatch()
     const cookies = new Cookies();
+    const navigate = useNavigate()   
 
     const data = {
         userName: userName,
         passsword: passsword
+    }
+
+    const RedirectNav = () => {
+        return navigate("/")
     }
 
     const handleSubmit = (e)=> {
@@ -30,15 +38,11 @@ function LoginForm() {
                         item.userName === data.userName &&
                         item.passsword === data.passsword
                     ){
-                        cookies.set("sessionID", item.id, {
-                            path: "/",
-                            sameSite: "none",
-                            secure: true,
-                          });
+                        cookies.set("sessionID", item.id);
+                        dispatch(userAction.changeLogedIn(true))
                     }
                 })
             })
-            setIsSuccess(true)
         }
     }
 
@@ -60,8 +64,12 @@ function LoginForm() {
                 onChangeInput={(e) => setPassword(e.target.value)}
             />
             {isError && <p>value is undefaind</p>}
-            {isSuccess && <p>Loged</p>}
-            <button>Login</button>
+            {<p>Loged</p>}
+            <UiInput 
+                type='submit'
+                value={'შესვლა'}
+                className="dark"
+            />
         </form>
     )
 }

@@ -1,0 +1,30 @@
+.menu {
+    position: absolute;
+    z-index: 2;
+    top: 80px;
+    background-color: #fff;
+    padding: 11px 0;
+    border-radius: 7px;
+    border: 1px solid #c8c8c8;
+    min-width: 180px;
+}
+
+.menu__item {
+    list-style: none;
+}
+
+.menu__item--link {
+    font-size: 14px;
+    color: black;
+    padding: 7px 23px;
+    display: block;
+    text-decoration: none;
+}
+
+.menu__item--link:hover {
+    background-color: aqua;
+}
+
+.active {
+    background-color: aqua;
+}

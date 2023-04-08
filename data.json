@@ -1,188 +1,279 @@
 {
   "events": [
     {
+      "2": 1,
       "id": 1863,
       "image": "https://static.tkt.ge/img/b991f209-42d9-4117-b719-5ffa52b01cd1.jpeg",
       "name": "VINI VICI - Powered by Mono Hall Tbilisi",
       "link_name": "vini-vici",
-      "price": "100",
       "location": "Tbilisi, Monoholl",
-      "date_month": "08 apr",
-      "date_time": "ხუთ. 22:22",
+      "date_month": "28 აპრ.",
+      "date_time": "პარ. 23:59",
+      "active_date": "04/28/2023",
       "body": "ვინი ვიცი არის ერთ ერთი ტოპ ელ. მუსიკის წამყვანი დუო რომელიც უკრავს ფსიქო ტრანსის ინდურ მზეობა მუსიკას",
-      "category": "concerts"
+      "category": "concerts",
+      "price": 80,
+      "priceBasket": {
+        "basket_1": 50,
+        "basket_2": 70,
+        "basket_3": 80
+      },
+      "ticketBasket": {
+        "basket_1": 0,
+        "basket_2": 0,
+        "basket_3": -19
+      }
     },
     {
       "id": 2930,
       "image": "https://static.tkt.ge/img/a8621031-9b79-4e2c-9cc5-361737f8d818.jpeg",
       "name": "TREEBAL 7 TH BIRTHDAY: ASTRIX / OUT OF ORBIT / LUCAS at MONO HALL",
       "link_name": "treebal",
-      "price": "100",
       "location": "Batumi, Kibe",
       "date_month": "08 apr",
       "date_time": "ხუთ. 22:22",
+      "active_date": "04/01/2023",
       "body": "ვინი ვიცი არის ერთ ერთი ტოპ ელ. მუსიკის წამყვანი დუო რომელიც უკრავს ფსიქო ტრანსის ინდურ მზეობა მუსიკას",
-      "category": "concerts"
+      "category": "concerts",
+      "price": 20,
+      "priceBasket": {
+        "basket_1": 10,
+        "basket_2": 20,
+        "basket_3": 30
+      },
+      "ticketBasket": {
+        "basket_1": 0,
+        "basket_2": 4,
+        "basket_3": 5
+      }
     },
     {
       "id": 3192,
       "image": "https://static.tkt.ge/img/add7feb0-cea1-4a9d-8072-98911a5c39b4.jpeg",
       "name": "FIRST CONTACT",
       "link_name": "first-contact",
-      "price": "100",
       "location": "Batumi, CIRCUS",
       "date_month": "08 apr",
       "date_time": "ხუთ. 22:22",
+      "active_date": "03/25/2023",
       "body": "ვინი ვიცი არის ერთ ერთი ტოპ ელ. მუსიკის წამყვანი დუო რომელიც უკრავს ფსიქო ტრანსის ინდურ მზეობა მუსიკას",
-      "category": "concerts"
+      "category": "concerts",
+      "price": 100,
+      "priceBasket": {
+        "basket_1": 100,
+        "basket_2": 120,
+        "basket_3": 150
+      },
+      "ticketBasket": {
+        "basket_1": 1,
+        "basket_2": 2,
+        "basket_3": 5
+      }
     },
     {
       "id": 4304,
       "image": "https://static.tkt.ge/img/0fd32fe1-2126-4a05-ad0d-91d72cd091bf.jpeg",
       "name": "Folamour - Mono Hall",
       "link_name": "folamour",
-      "price": "70",
       "location": "Tbilisi, KUS TBA",
       "date_month": "08 jul",
       "date_time": "შაბ. 23:59",
+      "active_date": "03/15/2023",
       "body": "ინერგეიტის ტექნო საღამოები ბრუნდება კუსტბის მიმდებარედ",
-      "category": "concerts"
+      "category": "concerts",
+      "price": 5,
+      "priceBasket": {
+        "basket_1": 5,
+        "basket_2": 40,
+        "basket_3": 80
+      },
+      "ticketBasket": {
+        "basket_1": 1,
+        "basket_2": 2,
+        "basket_3": 5
+      }
     },
     {
       "id": 5438,
       "image": "https://static.tkt.ge/img/92ce1ea0-ee76-4eb7-9cc9-06ff47ba4ca5.jpeg",
       "name": "GEORGIA - PORTUGAL",
       "link_name": "georgia-portugal",
-      "price": "10",
       "location": "Tbilisi, DINAMO ARENA",
       "date_month": "21 JUN",
       "date_time": "პარ. 20:00",
+      "active_date": "03/05/2023",
       "body": "საქართველოს ნაკრები დაუპირისპირდება პორტუგალიის ეროვნულ ნაკრებს ბორს პაიჭაძის სახელობის ეროვნულ სტადიონზე. ერთად ვუგულშემატკივრობთ ბიჭებს!",
-      "category": "sport"
+      "category": "sport",
+      "price": 33,
+      "priceBasket": {
+        "basket_1": 33,
+        "basket_2": 70,
+        "basket_3": 80
+      },
+      "ticketBasket": {
+        "basket_1": 2,
+        "basket_2": 2,
+        "basket_3": 5
+      }
     },
     {
       "id": 6997,
       "image": "https://static.tkt.ge/img/61f30468-a965-4f16-9c6b-72a767b87ab6.jpeg",
       "name": "მე გადმოვცურავ ზღვას",
       "link_name": "me-gadmovcurav-zgvas",
-      "price": "10",
       "location": "Tbilisi, ახალი თეატრი",
       "date_month": "21 JUN",
       "date_time": "პარ. 20:00",
+      "active_date": "02/12/2023",
       "body": "საქართველოს ნაკრები დაუპირისპირდება პორტუგალიის ეროვნულ ნაკრებს ბორს პაიჭაძის სახელობის ეროვნულ სტადიონზე. ერთად ვუგულშემატკივრობთ ბიჭებს!",
-      "category": "theatre"
+      "category": "theatre",
+      "price": 500,
+      "priceBasket": {
+        "basket_1": 500,
+        "basket_2": 70,
+        "basket_3": 80
+      },
+      "ticketBasket": {
+        "basket_1": 1,
+        "basket_2": 2,
+        "basket_3": 5
+      }
     },
     {
       "id": 7103,
       "image": "https://static.tkt.ge/img/cf119ae6-9a90-4f5b-8dc8-4e145824bf77.jpeg",
       "name": "გედების ტბა",
       "link_name": "gedebis-tba",
-      "price": "10",
       "location": "Tbilisi, OPERA",
       "date_month": "21 JUN",
       "date_time": "პარ. 20:00",
+      "active_date": "02/04/2023",
       "body": "საქართველოს ნაკრები დაუპირისპირდება პორტუგალიის ეროვნულ ნაკრებს ბორს პაიჭაძის სახელობის ეროვნულ სტადიონზე. ერთად ვუგულშემატკივრობთ ბიჭებს!",
-      "category": "opera"
+      "category": "opera",
+      "price": 50,
+      "priceBasket": {
+        "basket_1": 50,
+        "basket_2": 70,
+        "basket_3": 80
+      },
+      "ticketBasket": {
+        "basket_1": 2,
+        "basket_2": 2,
+        "basket_3": 5
+      }
     }
   ],
   "users": [
     {
+      "isVerify": true,
+      "ticketNumber": 24391863,
+      "balance": 2935,
       "fullName": "Davit Gelashvili",
       "userName": "dato",
       "passsword": "123",
       "id": 2439
     },
     {
+      "isVerify": false,
+      "ticket_id": null,
+      "balance": 3500,
       "fullName": "Nino Smith",
       "userName": "nino",
       "passsword": "123",
       "id": 2440
     },
     {
+      "isVerify": false,
+      "ticket_id": null,
+      "balance": 0,
       "fullName": "Mari Garcia",
       "userName": "mari",
       "passsword": "123",
       "id": 2441
     },
     {
+      "isVerify": false,
+      "ticket_id": null,
+      "balance": 0,
       "fullName": "Lasha Rodriguez",
       "userName": "lasha",
       "passsword": "123",
       "id": 2442
     },
     {
+      "isVerify": false,
+      "ticket_id": null,
+      "balance": 0,
       "fullName": "Levani Hernandez",
       "userName": "levani",
       "passsword": "123",
       "id": 2443
     },
     {
+      "isVerify": false,
+      "ticket_id": null,
+      "balance": 0,
       "fullName": "Keti Martinez",
       "userName": "keti",
       "passsword": "123",
       "id": 2444
     },
     {
+      "isVerify": false,
+      "ticket_id": null,
+      "balance": 0,
       "fullName": "Zura Johnson",
       "userName": "zura",
       "passsword": "123",
       "id": 2445
     },
     {
+      "isVerify": false,
+      "ticket_id": null,
+      "balance": 0,
       "fullName": "Giorgi Kartveli",
       "userName": "giorgi",
       "passsword": "123",
       "id": 2446
+    },
+    {
+      "isVerify": false,
+      "ticket_id": null,
+      "balance": 0,
+      "fullName": "omari jojua",
+      "userName": "omari",
+      "passsword": "123",
+      "id": 2447
+    },
+    {
+      "fullName": "jemala jemaladze",
+      "userName": "jemala",
+      "passsword": "123",
+      "id": 2448
     }
   ],
   "tickets": [
     {
-      "eventId": "1863",
-      "userId": "2439",
-      "ticketAddress": "VIP, 2 ",
-      "ticketDesc": "სასწრაფოდ იყიდება VIP ბილეთი",
-      "ticketPrice": "150",
-      "id": 1950
+      "userId": 2439,
+      "eventId": 2930,
+      "ticketNumber": 24392930,
+      "eventName": "TREEBAL 7 TH BIRTHDAY: ASTRIX / OUT OF ORBIT / LUCAS at MONO HALL",
+      "userfullName": "Davit Gelashvili",
+      "userName": "dato",
+      "active_date": "04/01/2023",
+      "status": true,
+      "id": 74039
     },
     {
-      "eventId": "2930",
-      "userId": "2439",
-      "ticketAddress": "Free",
-      "ticketDesc": "სასწრაფოდ იყიდება",
-      "ticketPrice": "150",
-      "id": 1951
-    },
-    {
-      "eventId": "5438",
-      "userId": "2439",
-      "ticketAddress": "section 2, b2, 31",
-      "ticketDesc": "იყიდება ბილეთი მეორე რიგი, ადგილი 31.",
-      "ticketPrice": "150",
-      "id": 1952
-    },
-    {
-      "eventId": "1863",
-      "userId": "2440",
-      "ticketAddress": "free",
-      "ticketDesc": "ვყიდი 2 ბილეთს",
-      "ticketPrice": "90",
-      "id": 1953
-    },
-    {
-      "eventId": "5438",
-      "userId": "2440",
-      "ticketAddress": "b1, section 3, 80",
-      "ticketDesc": "იყიდება სასწრაფოდ ბილეთი",
-      "ticketPrice": "50",
-      "id": 1954
-    },
-    {
-      "eventId": "1863",
-      "userId": "2441",
-      "ticketAddress": "free",
-      "ticketDesc": "იყიდება ბილეთი",
-      "ticketPrice": "100",
-      "id": 1955
+      "userId": 2439,
+      "eventId": 1863,
+      "ticketNumber": 24391863,
+      "eventName": "VINI VICI - Powered by Mono Hall Tbilisi",
+      "userfullName": "Davit Gelashvili",
+      "userName": "dato",
+      "active_date": "04/28/2023",
+      "status": true,
+      "id": 74040
     }
   ]
 }

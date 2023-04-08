@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { postApi } from "../../../../http/getApi";
 import UiInput from "../../../Ui/UiInput/UiInput"
 import Style from './RegForm.module.css'
@@ -9,11 +10,16 @@ function RegForm() {
     const [passsword, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const navigate = useNavigate()
 
     const data = {
         fullName: fullName,
         userName: userName,
         passsword: passsword
+    }
+
+    const RedirectNav = () => {
+        return navigate("/login")
     }
 
     const handleSubmit = (e)=> {
@@ -27,6 +33,7 @@ function RegForm() {
         } else {
             postApi('users', data)
             setIsSuccess(true)
+            RedirectNav()
         }
     }
 
@@ -50,14 +57,18 @@ function RegForm() {
             />
             <UiInput 
                 title='Password'
-                type='text'
+                type='password'
                 value={passsword}
                 placeholder='Password'
                 onChangeInput={(e) => setPassword(e.target.value)}
             />
             {isError && <p>value is undefaind</p>}
             {isSuccess && <p>send</p>}
-            <button>reg</button>
+            <UiInput 
+                type='submit'
+                value={'რეგისტრაცია'}
+                className="dark"
+            />
         </form>
     )
 }

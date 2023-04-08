@@ -1,6 +1,7 @@
 .detail {
-    width: 100%;
+    width: calc(100% - 280px);
     display: block;
+    margin-top: 40px;
 }
 .detail__cover {
     width: 100%;
@@ -22,7 +23,7 @@
     flex-wrap: wrap;
 }
 .detail__body--left {
-    max-width: calc(100% - 300px);
+    max-width: 100%;
 }
 .detail__body--right {
     width: 100%;

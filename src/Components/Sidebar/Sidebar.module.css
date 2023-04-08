@@ -1,6 +1,21 @@
 .sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    width: 100%;
+    width: 250px;
+    flex: 1;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.sidebar__menu {
+    padding: 20px;
     background-color: #fff;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+.sidebar__menu--item {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.sidebar__menu--link {
+    color: #000;
+    text-decoration: none;
 }

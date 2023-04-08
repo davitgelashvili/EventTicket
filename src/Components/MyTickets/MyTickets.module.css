@@ -1,0 +1,36 @@
+.ticket {
+    display: flex;
+    margin: 25px 0;
+    padding: 25px 0;
+    border-bottom: 1px solid #cecece;
+}
+
+.ticket-qr {
+    display: block;
+}
+
+.ticket-qr > canvas {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.ticket-qr-false {
+    width: 150px !important;
+    height: 150px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cecece;
+}
+
+.ticket-qr-false h1{
+    transform: rotate(-45deg);
+    color: red;
+    font-size: 18px;
+}
+
+.ticket-text {
+    width: 100%;
+    margin-left: 40px;
+
+}
