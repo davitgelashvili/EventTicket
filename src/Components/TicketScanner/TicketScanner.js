@@ -49,6 +49,9 @@ const TicketScanner = () => {
             <QrReaded 
                     delay={5000}
                     // style={previewStyle}
+                    constraints={{
+                        facingMode: 'environment'
+                    }}
                     onError={erorrScann}
                     onScan={handleScann}
                 />
