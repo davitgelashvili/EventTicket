@@ -20,7 +20,7 @@
       "ticketBasket": {
         "basket_1": 0,
         "basket_2": 0,
-        "basket_3": -22
+        "basket_3": -23
       }
     },
     {
@@ -166,7 +166,7 @@
     {
       "isVerify": true,
       "ticketNumber": 24391863,
-      "balance": 2855,
+      "balance": 2775,
       "fullName": "Davit Gelashvili",
       "userName": "dato",
       "passsword": "123",

@@ -12,22 +12,24 @@ function EventContextProvider({children}) {
 
     function price(data) {
         data.map(item => {
-            if(item.ticketBasket.basket_1 > 0) {
-                putApi(`events/${item.id}`, {
-                    ...item,
-                    price: item.priceBasket.basket_1
-                }) 
-            }else if(item.ticketBasket.basket_2 > 0) {
-                putApi(`events/${item.id}`, {
-                    ...item,
-                    price: item.priceBasket.basket_2
-                }) 
-            }else {
-                putApi(`events/${item.id}`, {
-                    ...item,
-                    price: item.priceBasket.basket_3
-                }) 
-            }
+            return( 
+                item.ticketBasket.basket_1 > 0 ? (
+                    putApi(`events/${item.id}`, {
+                        ...item,
+                        price: item.priceBasket.basket_1
+                    }) 
+                ) : item.ticketBasket.basket_2 > 0 ? (
+                    putApi(`events/${item.id}`, {
+                        ...item,
+                        price: item.priceBasket.basket_2
+                    }) 
+                ) : (
+                    putApi(`events/${item.id}`, {
+                        ...item,
+                        price: item.priceBasket.basket_3
+                    }) 
+                )
+            )
         })
     }
 
