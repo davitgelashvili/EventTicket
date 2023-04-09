@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import QrReaded from 'react-qr-scanner'
 import { getApi, putApi } from '../../http/getApi'
 import UiInput from '../Ui/UiInput/UiInput'
 import Style from './TicketScanner.module.css'
 
 const TicketScanner = () => {
-    const [returnCamera, setReturnCamera] = useState(false)
+    const ref = useRef()
     const [statusInfo, setStatusInfo] = useState(false)
     const [eventTitle, setEventTitle] = useState('')
     const [userTitle, setUserTitle] = useState('')
@@ -40,26 +40,16 @@ const TicketScanner = () => {
 
     return (
         <div className={`${Style['scaner']}`}>
-            {
-                !returnCamera ? (
-                    <QrReaded 
-                        delay={5000}
-                        // style={previewStyle}
-                        onError={erorrScann}
-                        onScan={handleScann}
-                    />
-                ) : (
-                    <QrReaded 
-                        delay={5000}
-                        // style={previewStyle}
-                        constraints={{
-                            facingMode: 'environment'
-                        }}
-                        onError={erorrScann}
-                        onScan={handleScann}
-                    />
-                )
-            }
+            <QrReaded 
+                ref={ref.current}
+                delay={300}
+                constraints={{
+                    facingMode: 'environment'
+                }}
+                style={{ width: '100%' }}
+                onError={erorrScann}
+                onScan={handleScann}
+            />
 
             {statusInfo === true && (
                 <div className={`${Style['scaner-popup']}`}>
@@ -76,9 +66,6 @@ const TicketScanner = () => {
                     />
                 </div>
             )}
-            <button onClick={()=>setReturnCamera(true)}>
-                კამერის მობრუნება
-            </button>
         </div>
     )
 }
