@@ -5,6 +5,7 @@ import UiInput from '../Ui/UiInput/UiInput'
 import Style from './TicketScanner.module.css'
 
 const TicketScanner = () => {
+    const [returnCamera, setReturnCamera] = useState(false)
     const [statusInfo, setStatusInfo] = useState(false)
     const [eventTitle, setEventTitle] = useState('')
     const [userTitle, setUserTitle] = useState('')
@@ -24,15 +25,8 @@ const TicketScanner = () => {
                     setEventTitle(data.eventName)
                     setUserTitle(data.userfullName)
                     putApi(`tickets/${data.id}`, {
-                        "userId": data.userId,
-                        "eventId": data.eventId,
-                        "ticketNumber": data.ticketNumber,
-                        "eventName": data.eventName,
-                        "userfullName": data.userfullName,
-                        "userName": data.userName,
-                        "active_date": data.active_date,
+                        ...data,
                         "status": false,
-                        "id": data.id
                     })
                     setStatusText('ბილეთი წარმატებით გატარდა')
                     setStatusInfo(true)
@@ -46,15 +40,26 @@ const TicketScanner = () => {
 
     return (
         <div className={`${Style['scaner']}`}>
-            <QrReaded 
-                    delay={5000}
-                    // style={previewStyle}
-                    constraints={{
-                        facingMode: 'environment'
-                    }}
-                    onError={erorrScann}
-                    onScan={handleScann}
-                />
+            {
+                !returnCamera ? (
+                    <QrReaded 
+                        delay={5000}
+                        // style={previewStyle}
+                        onError={erorrScann}
+                        onScan={handleScann}
+                    />
+                ) : (
+                    <QrReaded 
+                        delay={5000}
+                        // style={previewStyle}
+                        constraints={{
+                            facingMode: 'environment'
+                        }}
+                        onError={erorrScann}
+                        onScan={handleScann}
+                    />
+                )
+            }
 
             {statusInfo === true && (
                 <div className={`${Style['scaner-popup']}`}>
@@ -69,9 +74,11 @@ const TicketScanner = () => {
                         }}
                         className="dark"
                     />
-                    
                 </div>
             )}
+            <button onClick={()=>setReturnCamera(true)}>
+                კამერის მობრუნება
+            </button>
         </div>
     )
 }

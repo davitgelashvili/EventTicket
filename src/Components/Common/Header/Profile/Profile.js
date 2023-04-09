@@ -1,13 +1,18 @@
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import UiInput from '../../../Ui/UiInput/UiInput'
 import { useSelector } from 'react-redux'
 import ProfileMenu from './ProfileMenu'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Profile = () => {
+    const location = useLocation()
     const [isMenu, setIsMenu] = useState(false)
     const navigate = useNavigate()
     const user = useSelector( state => state.userData)
+
+    useEffect(()=>{
+        setIsMenu(false)
+    }, [location])
 
     return (
         <>

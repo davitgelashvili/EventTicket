@@ -20,7 +20,7 @@
       "ticketBasket": {
         "basket_1": 0,
         "basket_2": 0,
-        "basket_3": -23
+        "basket_3": -26
       }
     },
     {
@@ -166,7 +166,7 @@
     {
       "isVerify": true,
       "ticketNumber": 24391863,
-      "balance": 2775,
+      "balance": 2615,
       "fullName": "Davit Gelashvili",
       "userName": "dato",
       "passsword": "123",
@@ -262,17 +262,6 @@
       "active_date": "04/01/2023",
       "status": true,
       "id": 74039
-    },
-    {
-      "userId": 2439,
-      "eventId": 1863,
-      "ticketNumber": 24391863,
-      "eventName": "VINI VICI - Powered by Mono Hall Tbilisi",
-      "userfullName": "Davit Gelashvili",
-      "userName": "dato",
-      "active_date": "04/28/2023",
-      "status": true,
-      "id": 74040
     }
   ]
 }
