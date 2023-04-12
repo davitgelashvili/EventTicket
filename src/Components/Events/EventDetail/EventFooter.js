@@ -21,22 +21,10 @@ function EventFooter({item}){
     let date = new Date().getDate()
     let year = new Date().getFullYear()
 
-    
     useEffect(()=>{
         filtered?.map(id => id.eventId === item?.id && setThisTicketBuy(true))
     }, [filtered, item])
 
-
-    // const setCart = ()=> {
-    //     const getItem = localStorage.getItem('items')
-    //     if(getItem !== null) {
-    //         const getNewItem = [...JSON.parse(getItem), ...item]
-    //         localStorage.setItem('items', JSON.stringify(getNewItem));
-    //     }else {
-    //         setCartItem(item)
-    //         localStorage.setItem('items', JSON.stringify(item));
-    //     }
-    // }
     function changeBasket(item){
         if(item.ticketBasket.basket_1 > 0){
             putApi(`events/${item.id}`, {
