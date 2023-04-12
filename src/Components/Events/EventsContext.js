@@ -1,11 +1,9 @@
 import { createContext, useEffect, useState } from "react"
-import { useSelector } from "react-redux";
-import {getApi, putApi} from "../../http/getApi";
+import {getData, getTicket, sendData} from "../../http/getApi";
 
 const EventContext = createContext();
 
 function EventContextProvider({children}) {
-    const user = useSelector(state => state.userData)
     const [eventsData, setEvenstData] = useState([])
     const [ticketsData, setTicketsData] = useState([]);
     const [usersData, setUsersData] = useState([]);
@@ -13,20 +11,20 @@ function EventContextProvider({children}) {
     function price(data) {
         data.map(item => {
             return( 
-                item.ticketBasket.basket_1 > 0 ? (
-                    putApi(`events/${item.id}`, {
+                item.ticket_basket_1 > 0 ? (
+                    sendData(`events/${item.id}`, 'put', {
                         ...item,
-                        price: item.priceBasket.basket_1
+                        price: item.price_basket_1
                     }) 
-                ) : item.ticketBasket.basket_2 > 0 ? (
-                    putApi(`events/${item.id}`, {
+                ) : item.ticket_basket_2 > 0 ? (
+                    sendData(`events/${item.id}`, 'put', {
                         ...item,
-                        price: item.priceBasket.basket_2
+                        price: item.price_basket_2
                     }) 
                 ) : (
-                    putApi(`events/${item.id}`, {
+                    sendData(`events/${item.id}`, 'put', {
                         ...item,
-                        price: item.priceBasket.basket_3
+                        price: item.price_basket_3
                     }) 
                 )
             )
@@ -34,14 +32,16 @@ function EventContextProvider({children}) {
     }
 
     useEffect(() => {
-        getApi('events').then(res => {
+        getData('events').then(res => {
             const data = res?.data
             price(data && data)
             setEvenstData(data && data)
         })
-        getApi('tickets').then(res => setTicketsData(res?.data))
-        getApi('users').then(res => setUsersData(res?.data))
-    }, [user])
+        getTicket('tickets').then(res => {
+            const data = res?.data
+            setTicketsData(data && data)
+        })
+    }, [])
 
     return (
         <EventContext.Provider value={{eventsData: eventsData, ticketsData: ticketsData, usersData: usersData}} >

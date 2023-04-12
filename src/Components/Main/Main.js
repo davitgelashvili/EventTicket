@@ -20,17 +20,13 @@ function Main() {
     let nowTime = new Date(month+'/'+date+'/'+year).getTime()
 
     const newFiltered = eventsData.filter(item => {
-        const eventFullDate = item.active_date
-        const eventDate = eventFullDate.split("/")
-        const eventTime = new Date(eventDate[0]+'/'+eventDate[1]+'/'+eventDate[2]).getTime()
-        return (eventTime > nowTime && item)
+        const eventDate = item.active_date
+        return (eventDate > nowTime && item)
     })
 
     const oldFiltered = eventsData.filter(item => {
-        const eventFullDate = item.active_date
-        const eventDate = eventFullDate.split("/")
-        const eventTime = new Date(eventDate[0]+'/'+eventDate[1]+'/'+eventDate[2]).getTime()
-        return (eventTime < nowTime && item)
+        const eventDate = item.active_date
+        return (eventDate < nowTime && item)
     })
     
     return (

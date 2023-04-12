@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import QrReaded from 'react-qr-scanner'
-import { getApi, putApi } from '../../http/getApi'
+import { getTicket, sendTicket } from '../../http/getApi'
 import UiInput from '../Ui/UiInput/UiInput'
 import Style from './TicketScanner.module.css'
 
@@ -18,13 +18,13 @@ const TicketScanner = () => {
     function handleScann(e){
         if(e !== null && !statusInfo) {
             const ticketId = JSON.parse(e.text);
-            getApi(`tickets?ticketNumber=${ticketId}`).then(res => {
+            getTicket(`tickets?ticketNumber=${ticketId}`).then(res => {
                 const data = res.data[0]
 
                 if(data.status === true){
                     setEventTitle(data.eventName)
                     setUserTitle(data.userfullName)
-                    putApi(`tickets/${data.id}`, {
+                    sendTicket(`tickets/${data.id}`, 'put', {
                         ...data,
                         "status": false,
                     })

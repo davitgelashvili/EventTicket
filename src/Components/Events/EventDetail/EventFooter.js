@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Cookies from 'universal-cookie'
-import { getApi, postApi, putApi } from '../../../http/getApi'
+import { getApi, getData, postApi, putApi, sendData, sendTicket, ticketApi } from '../../../http/getApi'
 import { userAction } from '../../../store/userData'
 import { EventContext } from '../EventsContext'
 import UiInput from './../../Ui/UiInput/UiInput'
@@ -21,63 +21,47 @@ function EventFooter({item}){
     let date = new Date().getDate()
     let year = new Date().getFullYear()
 
-    useEffect(()=>{
-        filtered?.map(id => id.eventId === item?.id && setThisTicketBuy(true))
-    }, [filtered, item])
-
     function changeBasket(item){
-        if(item.ticketBasket.basket_1 > 0){
-            putApi(`events/${item.id}`, {
+        if(item.ticket_basket_1 > 0){
+            sendData(`events/${item.id}`, 'put', {
                 ...item,
-                ticketBasket: {
-                    basket_1: item.ticketBasket.basket_1 - 1,
-                    basket_2: item.ticketBasket.basket_2,
-                    basket_3: item.ticketBasket.basket_3
-                }
+                ticket_basket_1: item.ticket_basket_1 - 1,
             })
-        }else if(item.ticketBasket.basket_2 > 0){
-            putApi(`events/${item.id}`, {
+        }else if(item.ticket_basket_2 > 0){
+            sendData(`events/${item.id}`, 'put', {
                 ...item,
-                ticketBasket: {
-                    basket_1: item.ticketBasket.basket_1,
-                    basket_2: item.ticketBasket.basket_2 - 1,
-                    basket_3: item.ticketBasket.basket_3
-                }
+                ticket_basket_2: item.ticket_basket_2 - 1,
             })
         }else {
-            putApi(`events/${item.id}`, {
+            sendData(`events/${item.id}`, 'put', {
                 ...item,
-                ticketBasket: {
-                    basket_1: item.ticketBasket.basket_1,
-                    basket_2: item.ticketBasket.basket_2,
-                    basket_3: item.ticketBasket.basket_3 - 1
-                }
+                ticket_basket_3: item.ticket_basket_3 - 1
             })
         }
     }
 
     function getBuyTicket(item) {
-        getApi(`users/${cookies.get('sessionID')}`).then(res => {
+        getData(`users/${cookies.get('sessionID')}`).then(res => {
             const data = res?.data
+            console.log('res',res.data)
             const ticketNumber = JSON.parse(user.userId+''+item.id)
             
             function goFunct(){
-                const newPrice =  data.balance - item.price
-                putApi(`users/${user.userId}`, {
+                const newPrice = data.balance - item.price
+                sendData(`users/${user.userId}`, 'PUT', {
                     ...data,
-                    "ticketNumber": ticketNumber,
                     "balance": newPrice,
                 })
                 dispatch(userAction.changeBalance(newPrice))
-                postApi(`tickets/`, {
-                    "userId": data.id,
-                    "eventId": item.id,
-                    "ticketNumber": ticketNumber,
+                sendTicket('tickets', 'post', {
+                    "userId": Number(data.id),
+                    "eventId": Number(item.id),
                     "eventName": item.name,
                     "userfullName": data.fullName,
                     "userName": data.userName,
                     "active_date": item.active_date,
-                    "status": true
+                    "status": true,
+                    "ticketNumber": Number(ticketNumber)
                 })
             }
 
@@ -101,9 +85,7 @@ function EventFooter({item}){
 
     let nowTime = new Date(month+'/'+date+'/'+year).getTime()
 
-    const eventFullDate = item?.active_date
-    const eventDate = eventFullDate?.split("/")
-    const eventTime = new Date(eventDate && eventDate[0]+'/'+eventDate[1]+'/'+eventDate[2]).getTime()
+    const eventTime = item?.active_date
   
   
     return (
@@ -118,7 +100,7 @@ function EventFooter({item}){
                     onClickInput={() => {
                         getBuyTicket(item && item)
                         changeBasket(item && item)
-                        navigate("/ticket")
+                        // navigate("/ticket")
                     }}
                     className={'dark'}
                 />

@@ -17,13 +17,13 @@ function EventDesc({item}){
             {item?.location}
         </p>
         <p>
-            კალათა I - <span>{item?.priceBasket.basket_1} ლ</span>
+            კალათა I - <span>{item?.price_basket_1} ლ</span>
         </p>
         <p>
-            კალათა II - <span>{item?.priceBasket.basket_2} ლ</span>
+            კალათა II - <span>{item?.price_basket_2} ლ</span>
         </p>
         <p>
-            კალათა III - <span>{item?.priceBasket.basket_3} ლ</span>
+            კალათა III - <span>{item?.price_basket_3} ლ</span>
         </p>
     </div>
     )

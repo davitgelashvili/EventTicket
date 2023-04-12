@@ -11,6 +11,8 @@ const MyTickets = () => {
     let date = new Date().getDate()
     let year = new Date().getFullYear()
     const filtered = ticketsData.filter( data => data.userId === +cookies.get('sessionID'))
+
+    console.log(ticketsData)
     
     if(month < 10){
         month = 0+''+month
@@ -30,14 +32,13 @@ const MyTickets = () => {
     return (
         <>
         {sorted?.map(item => {
-            const eventFullDate = item?.active_date
-            const eventDate = eventFullDate?.split("/")
-            const eventTime = new Date(eventDate && eventDate[0]+'/'+eventDate[1]+'/'+eventDate[2]).getTime()
+            const eventTime = new Date(item?.active_date).getTime()
 
             return (
                 <div key={item.id} className={`${Style['ticket']}`}>
                     
                     <div className={`${Style['ticket-qr']}`}>
+                        {console.log(eventTime > nowTime , item.status)}
                         {
                             eventTime > nowTime && item.status ? (
                                 <QRCodeCanvas value={JSON.stringify(item.ticketNumber)} />
@@ -49,8 +50,8 @@ const MyTickets = () => {
                         }
                     </div>
                     <div className={`${Style['ticket-text']}`}>
-                        <h1>{item.eventName}</h1>
-                        <p>date: 12.06.2023</p>
+                        <h1>{item?.eventName}</h1>
+                        <p>date: {item?.active_date}</p>
                     </div>
                 </div>
             )

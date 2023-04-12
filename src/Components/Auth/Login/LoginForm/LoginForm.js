@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { getApi} from "../../../../http/getApi";
+import { getData} from "../../../../http/getApi";
 import UiInput from "../../../Ui/UiInput/UiInput"
 import Style from './LoginForm.module.css'
 import Cookies from "universal-cookie";
@@ -9,30 +9,32 @@ import { userAction } from "../../../../store/userData";
 function LoginForm() {
     const cookies = new Cookies();
     const [userName, setUserName] = useState('');
-    const [passsword, setPassword] = useState('');
+    const [password, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
     const dispatch = useDispatch()
 
     const data = {
         userName: userName,
-        passsword: passsword
+        password: password
     }
 
     const handleSubmit = (e)=> {
         e.preventDefault();
         if(
             userName === '' || 
-            passsword === ''
+            password === ''
         ) {
             setIsError(true)
         } else {
-            getApi('users').then( res => {
+            getData('users').then( res => {
                 const thisData = res?.data
-                thisData?.map(item => {return(
-                    item.userName === data.userName && item.passsword === data.passsword &&(
+                thisData?.map(item => {
+                    return(
+                    item.userName === data.userName && item.password === data.password &&(
                         cookies.set("sessionID", item.id),
-                        console.log(thisData),
-                        dispatch(userAction.changeLogedIn(true))
+                        dispatch(userAction.changeLogedIn(true)),
+                        dispatch(userAction.changeVerified(item.isVerify)),
+                        dispatch(userAction.changeBalance(item.balance))
                     )
                 )})
             })
@@ -52,12 +54,11 @@ function LoginForm() {
             <UiInput 
                 title='Password'
                 type='password'
-                value={passsword}
+                value={password}
                 placeholder='Password'
                 onChangeInput={(e) => setPassword(e.target.value)}
             />
             {isError && <p>value is undefaind</p>}
-            {<p>Loged</p>}
             <UiInput 
                 type='submit'
                 value={'შესვლა'}

@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { postApi } from "../../../../http/getApi";
+import { sendData } from "../../../../http/getApi";
 import UiInput from "../../../Ui/UiInput/UiInput"
 import Style from './RegForm.module.css'
 
 function RegForm() {
     const [fullName, setFullName] = useState('');
     const [userName, setUserName] = useState('');
-    const [passsword, setPassword] = useState('');
+    const [password, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const navigate = useNavigate()
@@ -15,7 +15,9 @@ function RegForm() {
     const data = {
         fullName: fullName,
         userName: userName,
-        passsword: passsword
+        password: password,
+        balance: 0,
+        isVerify: false
     }
 
     const RedirectNav = () => {
@@ -27,11 +29,11 @@ function RegForm() {
         if(
             fullName === '' ||
             userName === '' || 
-            passsword === ''
+            password === ''
         ) {
             setIsError(true)
         } else {
-            postApi('users', data)
+            sendData('users', 'post', data)
             setIsSuccess(true)
             RedirectNav()
         }
@@ -58,7 +60,7 @@ function RegForm() {
             <UiInput 
                 title='Password'
                 type='password'
-                value={passsword}
+                value={password}
                 placeholder='Password'
                 onChangeInput={(e) => setPassword(e.target.value)}
             />

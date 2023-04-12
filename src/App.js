@@ -7,17 +7,16 @@ import RegistrationPage from './Pages/Registration/Registration';
 import { useState, useEffect } from 'react';
 import LoginPage from './Pages/Login/Login';
 import Cookies from 'universal-cookie';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userAction } from './store/userData';
 import TicketScanerPage from './Pages/TicketScaner/TicketScaner';
-import { getApi } from './http/getApi';
+import { getData } from './http/getApi';
 
 const cookie = new Cookies()
 function App() {
   const location = useLocation()
   const dispatch = useDispatch()
   const [sidebar, setSidebar] = useState(true)
-  const user = useSelector( state => state.userData)
 
   useEffect(()=> {
     if(
@@ -34,16 +33,19 @@ function App() {
 
   useEffect(()=> {
    if(cookie.get('sessionID') !== undefined) {
-    getApi(`users/${cookie.get('sessionID')}`).then(res => {
-      return(
-        dispatch(userAction.changeLogedIn(true)),
-        dispatch(userAction.changeBalance(res.data.balance)),
-        dispatch(userAction.changeVerified(res.data.isVerify)),
-        dispatch(userAction.changeUserId(res.data.id))
-      )
+    getData(`users?id=${cookie.get('sessionID')}`).then(res => {
+      const data = res.data
+      data.map( item => {
+        return(
+          dispatch(userAction.changeLogedIn(true)),
+          dispatch(userAction.changeBalance(item.balance)),
+          dispatch(userAction.changeVerified(item.isVerify)),
+          dispatch(userAction.changeUserId(item.id))
+        )
+      })
     })
    }
-  }, [user, dispatch])
+  }, [dispatch])
   
 
   return (
@@ -56,7 +58,7 @@ function App() {
           <Route path="/*" element={<EventPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
-          <Route path="/scanner" element={<TicketScanerPage />} />
+          {/* <Route path="/scanner" element={<TicketScanerPage />} /> */}
         </Routes>
         </div>
       </div>

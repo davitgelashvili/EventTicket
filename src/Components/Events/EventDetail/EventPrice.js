@@ -4,12 +4,13 @@ const EventPrice = ({item}) => {
     const [price, setPrice] = useState('')
 
     useEffect(()=>{
-        if(item?.ticketBasket.basket_1 > 0) {
-            setPrice(item?.priceBasket.basket_1) 
-        }else if(item?.ticketBasket.basket_2 > 0) {
-            setPrice(item?.priceBasket.basket_2) 
+        if(item?.ticket_basket_1 > 0) {
+            setPrice(item?.price_basket_1) 
+        }else if(item?.ticket_basket_2 > 0) {
+            console.log(item.price_basket_2)
+            setPrice(item?.price_basket_2) 
         }else {
-            setPrice(item?.priceBasket.basket_3) 
+            setPrice(item?.price_basket_3) 
         }
     }, [item])
 
