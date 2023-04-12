@@ -1,8 +1,9 @@
 import axios from 'axios'
+const API = process.env.REACT_APP_API_URL
 
 async function getApi(url) {
     try{
-        const reset = await axios.get(`https://my-json-server.typicode.com/davitgelashvili/ggapp/${url}`)
+        const reset = await axios.get(`${API}${url}`)
         return reset
     }catch (error){
         console.log(error)
@@ -11,7 +12,7 @@ async function getApi(url) {
 
 async function postApi(url, data) {
     try{
-        const reset = await axios.post(`https://my-json-server.typicode.com/davitgelashvili/ggapp/${url}`, data)
+        const reset = await axios.post(`${API}${url}`, data)
         return reset
     }catch (error){
         console.log(error)
@@ -29,7 +30,7 @@ async function postQrCode(data) {
 
 async function putApi(url, data) {
     try{
-        const reset = await axios.put(`https://my-json-server.typicode.com/davitgelashvili/ggapp/${url}`, data)
+        const reset = await axios.put(`${API}${url}`, data)
         return reset
     }catch (error){
         console.log(error)
@@ -38,7 +39,7 @@ async function putApi(url, data) {
 
 async function deleteApi(url, data) {
     try{
-        const reset = await axios.delete(`https://my-json-server.typicode.com/davitgelashvili/ggapp/${url}`)
+        const reset = await axios.delete(`${API}${url}`)
         return reset
     }catch (error){
         console.log(error)
