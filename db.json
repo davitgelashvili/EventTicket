@@ -173,7 +173,7 @@
       "id": 2439
     },
     {
-      "isVerify": false,
+      "isVerify": true,
       "ticket_id": null,
       "balance": 3500,
       "fullName": "Nino Smith",
@@ -182,7 +182,7 @@
       "id": 2440
     },
     {
-      "isVerify": false,
+      "isVerify": true,
       "ticket_id": null,
       "balance": 0,
       "fullName": "Mari Garcia",
@@ -202,7 +202,7 @@
     {
       "isVerify": false,
       "ticket_id": null,
-      "balance": 0,
+      "balance": 500,
       "fullName": "Levani Hernandez",
       "userName": "levani",
       "passsword": "123",

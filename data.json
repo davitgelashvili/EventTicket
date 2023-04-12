@@ -18,9 +18,9 @@
         "basket_3": 80
       },
       "ticketBasket": {
-        "basket_1": 0,
-        "basket_2": 0,
-        "basket_3": -26
+        "basket_1": 10,
+        "basket_2": 30,
+        "basket_3": 40
       }
     },
     {
@@ -173,7 +173,7 @@
       "id": 2439
     },
     {
-      "isVerify": false,
+      "isVerify": true,
       "ticket_id": null,
       "balance": 3500,
       "fullName": "Nino Smith",
@@ -182,7 +182,7 @@
       "id": 2440
     },
     {
-      "isVerify": false,
+      "isVerify": true,
       "ticket_id": null,
       "balance": 0,
       "fullName": "Mari Garcia",
@@ -202,7 +202,7 @@
     {
       "isVerify": false,
       "ticket_id": null,
-      "balance": 0,
+      "balance": 500,
       "fullName": "Levani Hernandez",
       "userName": "levani",
       "passsword": "123",
