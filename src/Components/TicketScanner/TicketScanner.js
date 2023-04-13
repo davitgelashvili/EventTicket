@@ -45,7 +45,8 @@ const TicketScanner = () => {
                 style={{ width: '100%' }}
                 onError={erorrScann}
                 onScan={handleScann}
-                facingMode={'rear'}
+                // facingmode={'rear'}
+                constraints={ {facingMode: 'rear'} }
             />
 
             {statusInfo === true && (
