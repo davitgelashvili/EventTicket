@@ -38,10 +38,6 @@ const TicketScanner = () => {
         }
     }
 
-    function test(e){
-        console.log(e)
-    }
-
     return (
         <div className={`${Style['scaner']}`}>
             <QrReaded 
@@ -49,7 +45,7 @@ const TicketScanner = () => {
                 style={{ width: '100%' }}
                 onError={erorrScann}
                 onScan={handleScann}
-                chooseDeviceId={test}
+                facingMode={'rear'}
             />
 
             {statusInfo === true && (
@@ -67,13 +63,6 @@ const TicketScanner = () => {
                     />
                 </div>
             )}
-
-<UiInput 
-                        type='submit'
-                        value={"გათიშვა"}
-                        onClickInput={test}
-                        className="dark"
-                    />
         </div>
     )
 }
