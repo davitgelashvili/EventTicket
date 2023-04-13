@@ -85,7 +85,7 @@ function EventFooter({item}){
 
     let nowTime = new Date(month+'/'+date+'/'+year).getTime()
 
-    const eventTime = item?.active_date
+    const eventTime = new Date(item?.active_date).getTime()
   
   
     return (
