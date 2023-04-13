@@ -33,7 +33,7 @@ function LoginForm() {
                     item.userName === data.userName && item.password === data.password &&(
                         cookies.set("sessionID", item.id),
                         dispatch(userAction.changeLogedIn(true)),
-                        dispatch(userAction.changeVerified(item.isVerify)),
+                        dispatch(userAction.changeStatus(item.status)),
                         dispatch(userAction.changeBalance(item.balance))
                     )
                 )})

@@ -11,6 +11,14 @@ const ProfileMenu = () => {
             <li className={`${Style['menu__item']}`}>
                 <NavLink
                     className={({isActive}) => `${Style['menu__item--link']} ${isActive && Style['active']}`} 
+                    to={'/dashboard'}
+                >
+                    ადმინ პანელი
+                </NavLink>
+            </li>
+            <li className={`${Style['menu__item']}`}>
+                <NavLink
+                    className={({isActive}) => `${Style['menu__item--link']} ${isActive && Style['active']}`} 
                     to={'/ticket'}
                 >
                     ჩემი ბილეთები

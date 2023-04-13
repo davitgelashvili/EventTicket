@@ -36,7 +36,7 @@ const Profile = () => {
         <>
             <div>
                 <h3>Verify:</h3>
-                <h4>{user.verified ? 'true' : 'false'}</h4>
+                <h4>{user.status === false ? 'false' : user.status}</h4>
             </div>
             <div>
                 <h3>Balance:</h3>

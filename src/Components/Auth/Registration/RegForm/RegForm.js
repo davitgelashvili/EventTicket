@@ -17,7 +17,7 @@ function RegForm() {
         userName: userName,
         password: password,
         balance: 0,
-        isVerify: false
+        status: "false"
     }
 
     const RedirectNav = () => {

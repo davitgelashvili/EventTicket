@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialUserData = {
     logedIn: null,
     balance: null,
-    verified: false,
+    status: null,
     userId: null,
 }
 
@@ -17,8 +17,8 @@ const userData = createSlice({
         changeBalance(state, action) {
             state.balance = action.payload
         },
-        changeVerified(state, action) {
-            state.verified = action.payload
+        changeStatus(state, action) {
+            state.status = action.payload
         },
         changeUserId(state, action) {
             state.userId = action.payload

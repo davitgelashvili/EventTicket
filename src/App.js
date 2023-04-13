@@ -10,26 +10,12 @@ import Cookies from 'universal-cookie';
 import { useDispatch } from 'react-redux';
 import { userAction } from './store/userData';
 import TicketScanerPage from './Pages/TicketScaner/TicketScaner';
+import DashboardPage from './Pages/Dashboard/Dashboard'
 import { getData } from './http/getApi';
 
 const cookie = new Cookies()
 function App() {
-  const location = useLocation()
   const dispatch = useDispatch()
-  const [sidebar, setSidebar] = useState(true)
-
-  useEffect(()=> {
-    if(
-      location.pathname === '/scanner' || 
-      location.pathname === '/registration' || 
-      location.pathname === '/login' || 
-      location.pathname === '/sellticket'
-    ){
-      setSidebar(false)
-    }else {
-      setSidebar(true)
-    }
-  }, [location])
 
   useEffect(()=> {
    if(cookie.get('sessionID') !== undefined) {
@@ -39,7 +25,7 @@ function App() {
         return(
           dispatch(userAction.changeLogedIn(true)),
           dispatch(userAction.changeBalance(item.balance)),
-          dispatch(userAction.changeVerified(item.isVerify)),
+          dispatch(userAction.changeStatus(item.status)),
           dispatch(userAction.changeUserId(item.id))
         )
       })
@@ -53,12 +39,12 @@ function App() {
     <Header />
       <div className='container'>
         <div className='row'>
-        {sidebar && <Sidebar />}
         <Routes>
           <Route path="/*" element={<EventPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/scanner" element={<TicketScanerPage />} />
+          <Route path="/dashboard/*" element={<DashboardPage />} />
         </Routes>
         </div>
       </div>

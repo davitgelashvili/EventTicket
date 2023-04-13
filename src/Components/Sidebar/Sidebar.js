@@ -1,18 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import Style from './Sidebar.module.css'
 
-function Sidebar() {
-    const menu = [
-        {
-            id: 10893,
-            name: "მთავარი",
-            link: "/"
-        }
-    ]
+function Sidebar({data}) {
     return (
         <div className={`${Style['sidebar']}`}>
             <ul className={`${Style['sidebar__menu']}`}>
-                {menu.map( item => {
+                {data.map( item => {
                     return (
                         <li key={item.id} className={`${Style['sidebar__menu--item']}`}>
                             <NavLink to={item.link} className={`${Style['sidebar__menu--link']}`}>

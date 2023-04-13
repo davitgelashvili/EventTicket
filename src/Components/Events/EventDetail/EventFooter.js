@@ -65,9 +65,9 @@ function EventFooter({item}){
                 })
             }
 
-            if(item.price <= user.balance && user.verified){
+            if(item.price <= user.balance && user.status){
                 goFunct()
-            }else if(!user.verified){
+            }else if(!user.status){
                 setBuyTicketError('თქვენ არ ხართ ვერიფიცირებული')
             }else {
                 setBuyTicketError('თანხა არ არის საკმარისი')

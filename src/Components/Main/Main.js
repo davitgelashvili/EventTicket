@@ -20,12 +20,12 @@ function Main() {
     let nowTime = new Date(month+'/'+date+'/'+year).getTime()
 
     const newFiltered = eventsData.filter(item => {
-        const eventDate = item.active_date
+        const eventDate = new Date(item.active_date).getTime()
         return (eventDate > nowTime && item)
     })
 
     const oldFiltered = eventsData.filter(item => {
-        const eventDate = item.active_date
+        const eventDate = new Date(item.active_date).getTime()
         return (eventDate < nowTime && item)
     })
     

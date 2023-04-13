@@ -1,0 +1,16 @@
+.users {
+    width: 100%;
+    display: flex;
+}
+
+.users-list {
+    width: 50%;
+}
+
+.users-list-item {
+    width: fit-content;
+    display: block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #000;
+}

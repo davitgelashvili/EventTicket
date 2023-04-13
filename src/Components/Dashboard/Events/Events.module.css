@@ -1,0 +1,17 @@
+.events {
+    display: block;
+}
+
+.events-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #cecece;
+}
+
+.events-add-link {
+    text-decoration: none;
+    color: red;
+    font-size: 18px;
+    margin-bottom: 40px;
+    display: block;
+}

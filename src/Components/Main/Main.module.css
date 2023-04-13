@@ -1,0 +1,7 @@
+.new-events {
+    display: flex;
+}
+
+.new-events-item {
+    width: 100%;
+}
