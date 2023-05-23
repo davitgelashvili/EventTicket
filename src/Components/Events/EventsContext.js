@@ -37,10 +37,10 @@ function EventContextProvider({children}) {
             price(data && data)
             setEvenstData(data && data)
         })
-        getTicket('tickets').then(res => {
-            const data = res?.data
-            setTicketsData(data && data)
-        })
+        // getTicket('tickets').then(res => {
+        //     const data = res?.data
+        //     setTicketsData(data && data)
+        // })
     }, [])
 
     return (

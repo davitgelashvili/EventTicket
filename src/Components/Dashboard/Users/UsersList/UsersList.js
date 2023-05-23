@@ -44,7 +44,6 @@ const UsersList = () => {
                                 <h5>username: {item.userName}</h5>
                                 <h5>balance: {item.balance}</h5>
                                 <h5>password: {item.password}</h5>
-                                
                             </NavLink>
                         )
                     })

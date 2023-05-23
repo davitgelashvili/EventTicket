@@ -4,6 +4,7 @@ import EventCard from '../Events/EventCard/EventCard'
 import Style from './Main.module.css'
 
 function EventList({filtered, title}) {
+    console.log(filtered)
     if(title === 'new') {
         return (
             <div className={`${Style['new-events']}`}>

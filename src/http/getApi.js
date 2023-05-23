@@ -2,7 +2,6 @@ import axios from 'axios'
 const API = process.env.REACT_APP_API_URL;
 const TICKET_API = process.env.REACT_APP_TICKET_API_URL;
 
-
 async function getData(url) {
     try{
         const reset = await axios({
