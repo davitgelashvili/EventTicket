@@ -1,54 +1,32 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-import UiInput from '../../../Ui/UiInput/UiInput'
+import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import ProfileMenu from './ProfileMenu'
 import { useEffect, useState } from 'react'
+import { FaUserCircle } from 'react-icons/fa'
+import styles from './Profile.module.css'
 
 const Profile = () => {
     const location = useLocation()
     const [isMenu, setIsMenu] = useState(false)
-    const navigate = useNavigate()
     const user = useSelector( state => state.userData)
 
     useEffect(()=>{
         setIsMenu(false)
     }, [location])
 
+    console.log(user)
+
     return (
-        <>
-        {!user.logedIn && (
-            <>
-                <UiInput 
-                    type='submit'
-                    value={'Log In'}
-                    onClickInput={() => navigate('/login')}
-                    className={'dark'}
-                />
-                <UiInput 
-                    type='submit'
-                    value={'Sign Up'}
-                    onClickInput={() => navigate('/registration')}
-                    className={'light'}
-                />
-            </>
-        )}
-        {user.logedIn && (
-        <>
-            <div>
-                <h3>Verify:</h3>
-                <h4>{user.status === false ? 'false' : user.status}</h4>
-            </div>
-            <div>
-                <h3>Balance:</h3>
-                <h4>{user.balance}</h4>
-            </div>
-            <button onClick={() => setIsMenu(!isMenu)}>
-                Profile
+        <div style={{position: 'relative'}}>
+            <button 
+                className={styles.btn} 
+                onClick={() => setIsMenu(!isMenu)}
+                >
+                <FaUserCircle />
+                <p className={styles.btntext} >Profile</p>
             </button>
             {isMenu && <ProfileMenu />}
-        </>
-        )}
-        </>
+        </div>
     )
 }
 export default Profile

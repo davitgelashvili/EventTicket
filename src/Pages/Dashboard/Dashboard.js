@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Cookies from "universal-cookie"
-import Content from "../../Components/Content/Content"
 import DashboardRouter from "../../Components/Dashboard/DashboardRouter"
 import Sidebar from "../../Components/Sidebar/Sidebar"
 
@@ -36,7 +35,7 @@ const DashboardPage = () => {
     ]
     
     useEffect(()=>{
-        if(cookie.get('sessionID') !== undefined) {
+        if(cookie.get('sessionID') == undefined) {
             if(user.status) {
                 if(user.status !== 'admin') {
                     navigate("/")
@@ -55,9 +54,7 @@ const DashboardPage = () => {
             dashboard !== null && dashboard && ( 
             <>
             <Sidebar data={menuData}/>
-            <Content>
                 <DashboardRouter />
-            </Content>
             </>
             )
         }

@@ -2,36 +2,41 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import EventCard from '../Events/EventCard/EventCard'
 import Style from './Main.module.css'
+import { useContext, useEffect, useState } from 'react';
+import { EventContext } from '../Events/EventsContext';
+import { Col, Row } from 'react-bootstrap';
+import EventLoader from '../../module/Loader/EventLoader/EventLoader';
 
-function EventList({filtered, title}) {
-    console.log(filtered)
-    if(title === 'new') {
-        return (
-            <div className={`${Style['new-events']}`}>
-            {filtered && filtered.map(item => {
-                return (
-                    <div key={item.id} className={`${Style['new-events-item']}`}>
-                        <EventCard key={item.id} props={item}/>
-                    </div>
-                )
-            })}
-            </div>
-        )
-    }
+function EventList() {
+    const {eventsData} = useContext(EventContext)
+    const [data, setData] = useState([]) 
+    const [load, setLoad] = useState(true)
 
-    if(title === 'old') {
-        return (
-            <Swiper slidesPerView={3}>
-                {filtered && filtered.map(item => {
+    useEffect(()=>{
+        setData(eventsData)
+        setTimeout(() => {
+            setLoad(false)
+        }, 500);
+    },[eventsData])
+
+    return (
+        <div className={Style.list}>
+            <Row>
+                {load && (
+                    <EventLoader />
+                )}
+                {data && !load && data.map(item => {
                     return (
-                        <SwiperSlide key={item.id}>
+                        <Col xs={3} key={item.id}>
                             <EventCard props={item}/>
-                        </SwiperSlide>
+                        </Col>
                     )
                 })}
-            </Swiper>
-        )
-    }
+
+            </Row>
+        </div>
+        // <Swiper slidesPerView={3}><SwiperSlide key={item._id}></SwiperSlide></Swiper>
+    )
 }
 
 export default EventList

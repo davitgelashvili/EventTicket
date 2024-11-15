@@ -1,6 +1,7 @@
 .header {
     width: 100%;
-    background-color: #fff;
+    /* background-color: #1D2A3A; */
+    background-color: #141824;
     padding: 24px 0;
 }
 
@@ -8,12 +9,14 @@
     width: 100%;
     display: inline-flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .header__logo a {
     font-size: 30px;
-    color: #1449A3;
+    color: #fff;
     text-decoration: none;
+    font-family: 'Helvetica';
 }
 
 .header__search {

@@ -2,11 +2,13 @@ import axios from 'axios'
 const API = process.env.REACT_APP_API_URL;
 const TICKET_API = process.env.REACT_APP_TICKET_API_URL;
 
-async function getData(url) {
+
+async function getData(url, data) {
     try{
         const reset = await axios({
             method: 'get',
-            url: API + url
+            url: API + url,
+            data: data
         })
         return reset
     }catch (error){
@@ -14,10 +16,10 @@ async function getData(url) {
     }
 }
 
-async function sendData(url, method, data) {
+async function postData(url, method, data) {
     try{
         const reset = await axios({
-            baseURL: API,
+            // baseURL: API,
             method: method,
             url: API + url,
             data: {
@@ -29,6 +31,7 @@ async function sendData(url, method, data) {
         console.log(error)
     }
 }
+
 
 async function sendTicket(url, method, data) {
     try{
@@ -68,4 +71,4 @@ async function postQrCode(data) {
     }
 }
 
-export {getData, sendData, getTicket, sendTicket, postQrCode}
+export {getData, postData, getTicket, sendTicket, postQrCode}

@@ -10,7 +10,7 @@ function Events() {
             <Routes>
                 <Route path="/" element={<MainPage />} /> 
                 <Route path="/ticket" element={<MyTicketsPage />} />
-                <Route path="/:link_name" element={<EventDetail />} /> 
+                <Route path="/:linkName" element={<EventDetail />} /> 
             </Routes>
         </EventContextProvider>
     )

@@ -1,42 +1,47 @@
 import { useState } from "react"
-import { getData} from "../../../../http/getApi";
+import { getData, postData} from "../../../../http/getApi";
 import UiInput from "../../../Ui/UiInput/UiInput"
 import Style from './LoginForm.module.css'
 import Cookies from "universal-cookie";
 import { useDispatch } from "react-redux";
 import { userAction } from "../../../../store/userData";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
     const cookies = new Cookies();
-    const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const data = {
-        userName: userName,
+        email: email,
         password: password
     }
 
     const handleSubmit = (e)=> {
         e.preventDefault();
         if(
-            userName === '' || 
+            email === '' || 
             password === ''
         ) {
             setIsError(true)
         } else {
-            getData('users').then( res => {
-                const thisData = res?.data
-                thisData?.map(item => {
-                    return(
-                    item.userName === data.userName && item.password === data.password &&(
-                        cookies.set("sessionID", item.id),
+            postData(`/users/auth`, 'post', data)
+            .then( res => {
+                const thisData = res?.data?.[0]
+                return(
+                    thisData?.email === data?.email && thisData?.password === data?.password ? (
+                        // cookies.set("sessionID", thisData.id),
                         dispatch(userAction.changeLogedIn(true)),
-                        dispatch(userAction.changeStatus(item.status)),
-                        dispatch(userAction.changeBalance(item.balance))
+                        dispatch(userAction.changeStatus(thisData.status)),
+                        dispatch(userAction.changeBalance(thisData.balance)),
+                        navigate(-1)
+                    ) : (
+                        setIsError(true)
                     )
-                )})
+                )
             })
         }
     }
@@ -45,20 +50,20 @@ function LoginForm() {
         <form className={Style['form']} onSubmit={handleSubmit} onChange={() => setIsError(false)}>
 
             <UiInput 
-                title='Username'
+                title='ელ-ფოსტა'
                 type='text'
-                value={userName}
-                placeholder='E.G JSNOW'
-                onChangeInput={(e) => setUserName(e.target.value)}
+                value={email}
+                placeholder='შეიყვანეთ ტექსტი'
+                onChangeInput={(e) => setEmail(e.target.value)}
             />
             <UiInput 
-                title='Password'
+                title='პაროლი'
                 type='password'
                 value={password}
-                placeholder='Password'
+                placeholder='*******'
                 onChangeInput={(e) => setPassword(e.target.value)}
             />
-            {isError && <p>value is undefaind</p>}
+            {isError && <p>მონაცემები არასწორია</p>}
             <UiInput 
                 type='submit'
                 value={'შესვლა'}

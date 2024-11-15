@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Cookies from 'universal-cookie'
-import { getApi, getData, postApi, putApi, sendData, sendTicket, ticketApi } from '../../../http/getApi'
+import { getApi, getData, postApi, putApi, sendTicket, ticketApi } from '../../../http/getApi'
 import { userAction } from '../../../store/userData'
 import { EventContext } from '../EventsContext'
 import UiInput from './../../Ui/UiInput/UiInput'
@@ -23,17 +23,17 @@ function EventFooter({item}){
 
     function changeBasket(item){
         if(item.ticket_basket_1 > 0){
-            sendData(`events/${item.id}`, 'put', {
+            getData(`events/${item.id}`, 'put', {
                 ...item,
                 ticket_basket_1: item.ticket_basket_1 - 1,
             })
         }else if(item.ticket_basket_2 > 0){
-            sendData(`events/${item.id}`, 'put', {
+            getData(`events/${item.id}`, 'put', {
                 ...item,
                 ticket_basket_2: item.ticket_basket_2 - 1,
             })
         }else {
-            sendData(`events/${item.id}`, 'put', {
+            getData(`events/${item.id}`, 'put', {
                 ...item,
                 ticket_basket_3: item.ticket_basket_3 - 1
             })
@@ -48,7 +48,7 @@ function EventFooter({item}){
             
             function goFunct(){
                 const newPrice = data.balance - item.price
-                sendData(`users/${user.userId}`, 'PUT', {
+                getData(`users/${user.userId}`, 'PUT', {
                     ...data,
                     "balance": newPrice,
                 })
@@ -93,10 +93,10 @@ function EventFooter({item}){
         {eventTime > nowTime && <strong>{buyTicketError}</strong>}
         {eventTime > nowTime && thisTicketBuy && <strong>ეს ივენთი უკვე ნაყიდი გაქვს</strong>}
         {
-            eventTime > nowTime && !thisTicketBuy && (
+            (
                 <UiInput 
                     type='submit'
-                    value={'Buy Tickets'}
+                    value={'ყიდვა'}
                     onClickInput={() => {
                         getBuyTicket(item && item)
                         changeBasket(item && item)

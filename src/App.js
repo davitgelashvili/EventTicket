@@ -18,17 +18,17 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(()=> {
+    console.log('es')
    if(cookie.get('sessionID') !== undefined) {
-    getData(`users?id=${cookie.get('sessionID')}`).then(res => {
-      const data = res.data
-      data.map( item => {
-        return(
-          dispatch(userAction.changeLogedIn(true)),
-          dispatch(userAction.changeBalance(item.balance)),
-          dispatch(userAction.changeStatus(item.status)),
-          dispatch(userAction.changeUserId(item.id))
-        )
-      })
+    getData(`login/id=${cookie.get('sessionID')}`).then(res => {
+      const thisData = res?.data
+      console.log(res)
+      return(
+        dispatch(userAction.changeLogedIn(true)),
+        dispatch(userAction.changeBalance(thisData.balance)),
+        dispatch(userAction.changeStatus(thisData.status)),
+        dispatch(userAction.changeUserId(thisData.id))
+      )
     })
    }
   }, [dispatch])
@@ -38,7 +38,6 @@ function App() {
     <>
     <Header />
       <div className='container'>
-        <div className='row'>
         <Routes>
           <Route path="/*" element={<EventPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -46,7 +45,6 @@ function App() {
           <Route path="/scanner" element={<TicketScanerPage />} />
           <Route path="/dashboard/*" element={<DashboardPage />} />
         </Routes>
-        </div>
       </div>
     </>
   );

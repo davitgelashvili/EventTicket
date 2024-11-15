@@ -1,13 +1,23 @@
 import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { userAction } from '../../../../store/userData'
 import Style from './Profile.module.css'
+import { useEffect, useState } from 'react'
 
 const ProfileMenu = () => {
     const dispatch = useDispatch()
+    const user = useSelector( state => state.userData)
+
+    useEffect(()=>{
+        console.log('aaaa', user)
+    },[user])
 
     return (
         <ul className={`${Style['menu']}`}>
+             <div>
+                <h3>Verify:</h3>
+                <h4>{user.status === false ? 'false' : user.status}</h4>
+            </div>
             <li className={`${Style['menu__item']}`}>
                 <NavLink
                     className={({isActive}) => `${Style['menu__item--link']} ${isActive && Style['active']}`} 

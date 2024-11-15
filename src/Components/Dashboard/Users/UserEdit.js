@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getData, sendData } from "../../../http/getApi"
+import { getData, postData } from "../../../http/getApi"
 
 const UserEdit = () => {
     const {id} = useParams()
@@ -36,7 +36,7 @@ const UserEdit = () => {
             <h5>balance: {item.balance}</h5>
             <h5>password: {item.password}</h5>
             <button onClick={() => {
-                sendData(`/users/${id}`, 'put', {
+                postData(`/users/${id}`, 'put', {
                     status: status
                 })
             }}>

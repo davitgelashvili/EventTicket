@@ -1,23 +1,23 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { sendData } from "../../../../http/getApi";
+import { postData } from "../../../../http/getApi";
 import UiInput from "../../../Ui/UiInput/UiInput"
 import Style from './RegForm.module.css'
 
 function RegForm() {
-    const [fullName, setFullName] = useState('');
-    const [userName, setUserName] = useState('');
+    const [fullname, setFullname] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const navigate = useNavigate()
 
     const data = {
-        fullName: fullName,
-        userName: userName,
+        fullname: fullname,
+        email: email,
         password: password,
         balance: 0,
-        status: "false"
+        status: 'user'
     }
 
     const RedirectNav = () => {
@@ -27,13 +27,15 @@ function RegForm() {
     const handleSubmit = (e)=> {
         e.preventDefault();
         if(
-            fullName === '' ||
-            userName === '' || 
+            fullname === '' ||
+            email === '' || 
             password === ''
         ) {
             setIsError(true)
         } else {
-            sendData('users', 'post', data)
+            postData('/users/create', 'post', {
+                ...data
+            })
             setIsSuccess(true)
             RedirectNav()
         }
@@ -44,24 +46,24 @@ function RegForm() {
     return (
         <form className={Style['form']} onSubmit={handleSubmit} onChange={() => setIsError(false)}>
             <UiInput 
-                title='Fullname'
+                title='სახელი გვარი'
                 type='text'
-                value={fullName}
-                placeholder='E.G Jon Snow'
-                onChangeInput={(e) => setFullName(e.target.value)}
+                value={fullname}
+                placeholder='შეიყვანეთ ტექსტი'
+                onChangeInput={(e) => setFullname(e.target.value)}
             />
             <UiInput 
-                title='Username'
+                title='ელ-ფოსტა'
                 type='text'
-                value={userName}
-                placeholder='E.G JSNOW'
-                onChangeInput={(e) => setUserName(e.target.value)}
+                value={email}
+                placeholder='შეიყვანეთ ტექსტი'
+                onChangeInput={(e) => setEmail(e.target.value)}
             />
             <UiInput 
-                title='Password'
+                title='პაროლი'
                 type='password'
                 value={password}
-                placeholder='Password'
+                placeholder='********'
                 onChangeInput={(e) => setPassword(e.target.value)}
             />
             {isError && <p>value is undefaind</p>}

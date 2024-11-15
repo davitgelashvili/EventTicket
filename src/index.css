@@ -3,24 +3,17 @@
   padding: 0;
 }
 
+@import 'bootstrap/dist/css/bootstrap-grid.min.css';
+
+@font-face {
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Helvetica'), url('./assets/fonts/Helvetica.woff') format('woff');
+}
+  
+@import url("https://cdn.web-fonts.ge/fonts/bpg-arial-caps/css/bpg-arial-caps.min.css");
+
 body {
-  background-color: #F5F6FE;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.row {
-  margin-left: -15px;
-  margin-right: -15px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.row > * {
-  padding: 0 15px;
+  background-color: #0f111a;
 }

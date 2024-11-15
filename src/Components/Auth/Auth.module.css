@@ -1,0 +1,16 @@
+.auth {
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-family: "BPG Arial Caps", sans-serif;
+}

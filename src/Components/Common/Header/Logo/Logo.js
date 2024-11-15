@@ -5,7 +5,7 @@ function Logo() {
     return (
         <h1 className={`${Style['header__logo']}`}>
             <NavLink to={'/'}>
-                TICKETTRADE
+                EVN.GE
             </NavLink>
         </h1>
     )

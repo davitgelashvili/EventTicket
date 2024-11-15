@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {getData, sendData} from './../../../../http/getApi'
+import {getData, getEvent, postData} from './../../../../http/getApi'
 import Style from './../Events.module.css'
 
 const EventList = () => {
@@ -34,7 +34,7 @@ const EventList = () => {
                             <h3>{item.name}</h3>
                             <h5>price: {item.price}</h5>
                             <button onClick={() => {
-                                sendData(`events/${item.id}`, 'delete')
+                                postData(`events/${item.id}`, 'delete')
                             }}>წაშლა</button>
                         </div>
                     )
