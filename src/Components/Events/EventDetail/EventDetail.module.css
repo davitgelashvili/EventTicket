@@ -31,8 +31,18 @@
     background-color: #141824;
 }
 
+.detail__body--text {
+    color: #fff;
+    margin-top: 20px
+}
+
 .sidebar {
     display: block;
+}
+
+.sidebar__date {
+    color: #fff;
+    margin-bottom: 20px;
 }
 
 .prices {

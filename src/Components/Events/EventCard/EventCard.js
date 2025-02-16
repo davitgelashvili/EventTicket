@@ -5,7 +5,7 @@ import CardBody from './CardBody'
 
 function EventCard({props}){
 
-    console.log(props)
+    // console.log(props)
     return (
         <>
         {

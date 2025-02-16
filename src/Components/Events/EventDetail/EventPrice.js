@@ -3,7 +3,7 @@ import Style from './EventDetail.module.css'
 const EventPrice = ({item}) => {
     return (
         <div className={Style.sidebar}>
-            <p>
+            <p className={Style.sidebar__date}>
                 <span>{item?.date} </span>
                 <span>{item?.finishDate}</span>
             </p>

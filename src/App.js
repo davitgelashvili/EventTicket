@@ -37,15 +37,13 @@ function App() {
   return (
     <>
     <Header />
-      <div className='container'>
-        <Routes>
-          <Route path="/*" element={<EventPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/registration" element={<RegistrationPage />} />
-          <Route path="/scanner" element={<TicketScanerPage />} />
-          <Route path="/dashboard/*" element={<DashboardPage />} />
-        </Routes>
-      </div>
+    <Routes>
+      <Route path="/*" element={<EventPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/registration" element={<RegistrationPage />} />
+      <Route path="/scanner" element={<TicketScanerPage />} />
+      <Route path="/dashboard/*" element={<DashboardPage />} />
+    </Routes>
     </>
   );
 }

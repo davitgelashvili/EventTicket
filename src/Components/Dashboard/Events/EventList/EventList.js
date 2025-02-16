@@ -18,7 +18,7 @@ const EventList = () => {
 
 
     useEffect(()=> {
-        getData('/events').then( res => {
+        getData('/events/list').then( res => {
             const data = res.data 
             setData(data)
         })

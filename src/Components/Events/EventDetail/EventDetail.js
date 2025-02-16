@@ -7,6 +7,7 @@ import EventCover from './EventCover'
 import EventDesc from './EventDesc'
 import EventPrice from './EventPrice'
 import { Col, Row } from 'react-bootstrap'
+import { postData } from '../../../http/getApi'
 
 
 function EventDetail(){
@@ -14,20 +15,21 @@ function EventDetail(){
     const {linkName} = useParams()
     const filtered = eventsData?.filter( item => item?.linkName === linkName)
     const data = filtered?.[0]
-    console.log(666,eventsData)
   
     return (
         <div className={`${Style['detail']}`} key={'dsgf45gds45'}>
-            <EventCover item={data}/>
-            <Row>
-                <Col xl={9}>
-                    <EventDesc item={data}/>
-                </Col>
-                <Col xl={3}>
-                    <EventPrice item={data}/>
-                    <EventFooter item={data}/>
-                </Col>
-            </Row>
+            <div className='container'>
+                <EventCover item={data}/>
+                <div className='row'>
+                    <div className='col-md-8 col-lg-9'>
+                        <EventDesc item={data}/>
+                    </div>
+                    <div className='col-md-4 col-lg-3'>
+                        <EventPrice item={data}/>
+                        <EventFooter item={data}/>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

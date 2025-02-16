@@ -51,7 +51,7 @@ const DashboardPage = () => {
     return (
         <>
         {
-            dashboard !== null && dashboard && ( 
+            ( 
             <>
             <Sidebar data={menuData}/>
                 <DashboardRouter />

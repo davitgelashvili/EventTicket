@@ -20,20 +20,22 @@ function EventList() {
     },[eventsData])
 
     return (
-        <div className={Style.list}>
-            <Row>
-                {load && (
-                    <EventLoader />
-                )}
-                {data && !load && data.map(item => {
-                    return (
-                        <Col xs={3} key={item.id}>
-                            <EventCard props={item}/>
-                        </Col>
-                    )
-                })}
+        <div className='container'>
+            <div className={Style.list}>
+                <div className='row'>
+                    {load && (
+                        <EventLoader />
+                    )}
+                    {data && !load && data?.map(item => {
+                        return (
+                            <div className='col-md-6 col-lg-4' key={item.id}>
+                                <EventCard props={item}/>
+                            </div>
+                        )
+                    })}
 
-            </Row>
+                </div>
+            </div>
         </div>
         // <Swiper slidesPerView={3}><SwiperSlide key={item._id}></SwiperSlide></Swiper>
     )
